@@ -1,0 +1,59 @@
+{
+  "name": "openzeloku",
+  "version": "0.1.0",
+  "description": "Fast, dependency-free Sudoku engine in TypeScript — generator, solver, technique-aware difficulty rater, and human-readable hint engine. Supports 4×4, 6×6, and 9×9 boards. Extracted from the production engine that powers zeloku.com.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean --target es2020",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "keywords": [
+    "sudoku",
+    "sudoku-generator",
+    "sudoku-solver",
+    "puzzle",
+    "puzzle-generator",
+    "typescript",
+    "sudoku-engine",
+    "logic-puzzle",
+    "daily-sudoku",
+    "zeloku"
+  ],
+  "author": "Zeloku (https://zeloku.com)",
+  "license": "MIT",
+  "homepage": "https://zeloku.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-girff/openzeloku.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mr-girff/openzeloku/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
